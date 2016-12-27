@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import fuzzysearch from 'fuzzysearch';
 
-export default class FuzzySearcher extends React.Component {
+export class FuzzySearcher extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -10,11 +10,6 @@ export default class FuzzySearcher extends React.Component {
       haystack: props.items, // all items that can be searched through
       items: this.getInitialItems(), // the items wich are displayed in the fuzzy find list
     };
-  }
-
-  componentDidMount() {
-    // Initially focus the textbox.
-    this.input.focus();
   }
 
   // Move the selected index up or down.
@@ -38,6 +33,7 @@ export default class FuzzySearcher extends React.Component {
     }
   }
 
+  // handle key events in the textbox
   onKeyDown(event) {
     switch (event.key) {
       // Moving up and down
@@ -75,7 +71,10 @@ export default class FuzzySearcher extends React.Component {
       }
 
       case 'Enter': { // Enter key
-        this.props.onChange(this.state.items[this.state.selectedIndex]);
+        let item = this.state.items[this.state.selectedIndex];
+        if (item) {
+          this.props.onChange(item);
+        }
         break;
       }
       case 'Escape': {
@@ -109,40 +108,44 @@ export default class FuzzySearcher extends React.Component {
   }
 
   render() {
-    return <div className="fuzzy-switcher-background" onClick={this.props.onClose}>
-      <div className="fuzzy-switcher">
-        <span className="top-text">
-          <span className="label">
-            {this.props.label}
+    if (this.props.isOpen) {
+      return <div className="fuzzy-switcher-background" onClick={this.props.onClose}>
+        <div className="fuzzy-switcher">
+          <span className="top-text">
+            <span className="label">
+              {this.props.label}
+            </span>
+            <span className="instructions">
+              <span><strong>tab</strong> or <strong>↑↓</strong> to navigate</span>
+              <span><strong>enter</strong> to select</span>
+              <span><strong>esc</strong> to dismiss</span>
+            </span>
           </span>
-          <span className="instructions">
-            <span><strong>tab</strong> or <strong>↑↓</strong> to navigate</span>
-            <span><strong>enter</strong> to select</span>
-            <span><strong>esc</strong> to dismiss</span>
-          </span>
-        </span>
 
-        <input
-          type="text"
-          ref={ref => this.input = ref}
-          onKeyDown={this.onKeyDown.bind(this)}
-          onChange={this.onInputChanged.bind(this)}
-        />
-        <ul>
-          {this.state.items.map((item, ct) => {
-            // render each item
-            return <li
-              key={item}
-              className={classnames({
-                selected: ct === this.state.selectedIndex,
-              })}
-              onMouseOver={this.selectIndex.bind(this, ct)}
-              onClick={this.props.onChange.bind(this, this.state.items[ct])}
-            >{item}</li>;
-          })}
-        </ul>
-      </div>
-    </div>;
+          <input
+            type="text"
+            ref={ref => ref && ref.focus()}
+            onKeyDown={this.onKeyDown.bind(this)}
+            onChange={this.onInputChanged.bind(this)}
+          />
+          <ul>
+            {this.state.items.map((item, ct) => {
+              // render each item
+              return <li
+                key={item}
+                className={classnames({
+                  selected: ct === this.state.selectedIndex,
+                })}
+                onMouseOver={this.selectIndex.bind(this, ct)}
+                onClick={this.props.onChange.bind(this, this.state.items[ct])}
+              >{item}</li>;
+            })}
+          </ul>
+        </div>
+      </div>;
+    } else {
+      return null;
+    }
   }
 }
 FuzzySearcher.defaultProps = {
@@ -154,8 +157,13 @@ FuzzySearcher.defaultProps = {
   onChange(item) {}, // Called when an item is selected
   onClose() {}, // Called when the popup is closed
 };
+export default FuzzySearcher;
 
-export class Async extends FuzzySearcher {
+
+
+
+
+export class AsyncFuzzySearcher extends FuzzySearcher {
   // Since we're fetching async, fetch the new items to show.
   onInputChanged({target: {value}}) {
     return this.props.fetchItems(content).then(items => {
@@ -167,9 +175,52 @@ export class Async extends FuzzySearcher {
     });
   }
 }
-Async.defaultProps = Object.assign({}, FuzzySearcher.defaultProps, {
+AsyncFuzzySearcher.defaultProps = Object.assign({}, FuzzySearcher.defaultProps, {
   // by default, don't show any items.
   fetchItems() {
     return Promise.resolve([]);
   }
 });
+
+
+
+/*
+ * <FuzzyWrapper hotkey="/" popup={(onClose) => {
+ *   return <FuzzySearcher onClose={onClose} (my props here...) />
+ * }} />
+ *
+ */
+
+export class FuzzyWrapper extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+
+    // create a bound function to invoke when keys are pressed on the body.
+    this.keyEvent = (function(event) {
+      if (this.props.isKeyPressed(event)) {
+        event.preventDefault();
+        this.setState({isOpen: true});
+      }
+    }).bind(this);
+  }
+  componentDidMount() {
+    document.body.addEventListener('keydown', this.keyEvent);
+  }
+  componentWillUnmount() {
+    document.body.removeEventListener('keydown', this.keyEvent);
+  }
+
+  // Called by the containing fuzzysearcher to close itself.
+  onClose() {
+    this.setState({isOpen: false});
+  }
+  render() {
+    return this.props.popup(
+      this.state.isOpen,
+      this.onClose.bind(this),
+    );
+  }
+}

@@ -63,7 +63,7 @@ ReactDOM.render(<AsyncFuzzySearcher
   label="Fuzzy Searcher Label"
 
   // Here's where it gets interesting. This prop takes a function, and expects a promise to be
-  returned with a list of values that should be specified.
+  // returned with a list of values that should be specified.
   fetchItems={value => {
     // "value" is what the user typed into the box.
     if (value === "foo") {
@@ -83,14 +83,13 @@ ReactDOM.render(<AsyncFuzzySearcher
 A component for fuzzy searching through a collection of items.
 
 ```javascript
-import FuzzySearcher from 'react-fuzzy-searcher';
-ReactDOM.render(<FuzzySearcher
+<FuzzySearcher
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
   items={["foo", "bar", "baz"]}
   label="Fuzzy Searcher Label"
-/>, element);
+/>
 ```
 
 Props:
@@ -111,8 +110,7 @@ Props:
 An asyncronous version of the `FuzzySearcher` component.
 
 ```javascript
-import {AsyncFuzzySearcher} from 'react-fuzzy-searcher';
-ReactDOM.render(<AsyncFuzzySearcher
+<AsyncFuzzySearcher
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
@@ -129,7 +127,7 @@ ReactDOM.render(<AsyncFuzzySearcher
       return Promise.resolve(["hello", "world"]);
     }
   }}
-/>, element);
+/>
 ```
 
 
@@ -152,7 +150,6 @@ Props:
 A wrapper component that controls a `FuzzyFinder` and will bind its opening to a keyboard event.
 
 ```javascript
-import FuzzySearcher, {FuzzyWrapper} from 'react-fuzzy-searcher';
 // This is the code from above, just wrapped in a factory function.
 function renderFuzzySearcher(isOpen, onClose) {
   return <FuzzySearcher
@@ -170,10 +167,7 @@ function isCorrectKeyPressed(event) {
   return e.key === '/';
 }
 
-ReactDOM.render(<FuzzyWrapper
-  isKeyPressed={isCorrectKeyPressed}
-  popup={renderFuzzySearcher}
-/>, element);
+<FuzzyWrapper isKeyPressed={isCorrectKeyPressed} popup={renderFuzzySearcher} />
 ```
 
 

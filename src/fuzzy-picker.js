@@ -93,7 +93,7 @@ export default class FuzzyPicker extends React.Component {
   onInputChanged({target: {value}}) {
     if (value.length) {
       // Pick the closest matching items if possible.
-      let items = this.state.haystack.filter(item => fuzzysearch(value, item));
+      let items = this.state.haystack.filter(item => fuzzysearch(value.toLowerCase(), item.toLowerCase()));
       this.setState({items: items.slice(0, this.props.displayCount), selectedIndex: 0});
     } else {
       // initially, show an empty picker.
@@ -107,9 +107,15 @@ export default class FuzzyPicker extends React.Component {
     this.setState({selectedIndex: ct}); // update the state for real
   }
 
+  onClickOnBg(event) {
+    if (event.target.className === 'fuzzy-switcher-background') {
+      this.props.onClose();
+    }
+  }
+
   render() {
     if (this.props.isOpen) {
-      return <div className="fuzzy-switcher-background" onClick={this.props.onClose}>
+      return <div className="fuzzy-switcher-background" onClick={this.onClickOnBg.bind(this)}>
         <div className="fuzzy-switcher">
           <span className="top-text">
             <span className="label">

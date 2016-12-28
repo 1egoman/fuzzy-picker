@@ -159,7 +159,6 @@ FuzzySearcher.propTypes = {
   onClose: React.PropTypes.func,
 }
 FuzzySearcher.defaultProps = {
-  items: [], // Initial array of items
   label: 'Search', // The text above the searchbox that describes what's happening
   displayCount: 5, // How many items to display at once
   cycleAtEndsOfList: true, // When a user arrows past the end of the list, should the highlight wrap?

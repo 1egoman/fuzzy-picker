@@ -28,6 +28,7 @@ describe('Funnies Component', function() {
     let component = shallow(<FuzzySearcher
       isOpen={false}
       label="My Label"
+      items={['foo', 'bar', 'baz']}
     />), elem;
     assert.equal(component.type(), null);
   });
@@ -36,6 +37,7 @@ describe('Funnies Component', function() {
     let component = shallow(<FuzzySearcher
       isOpen={true}
       label="My Label"
+      items={['foo', 'bar', 'baz']}
     />), elem;
 
     assert.equal(component.find('.label').first().text(), "My Label"); // label set correctly
@@ -220,6 +222,7 @@ describe('Funnies Component', function() {
     let component = shallow(<FuzzySearcher
       isOpen={true}
       onClose={onCloseSpy}
+      items={['foo', 'bar', 'baz']}
     />), elem;
     let input = component.find('.fuzzy-input').first();
     input.simulate('keydown', {key: 'Escape'}); // select it

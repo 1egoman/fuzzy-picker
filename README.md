@@ -15,7 +15,7 @@ npm install --save react-fuzzy-picker
 import FuzzyPicker from 'react-fuzzy-picker';
 # Within your scss:
 @import "node_modules/react-fuzzy-picker/styles/fuzzy-picker"
-# Or, for plain css, take a look in node_modules/react-fuzzy-picker/styles/fuzzy-picker.css
+# Or, for plain css, take a look in node_modules/react-fuzzy-picker/styles/index.css
 ```
 
 ## Demo and Examples

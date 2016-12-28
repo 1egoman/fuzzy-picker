@@ -12,10 +12,10 @@ A live demo is available here: https://1egoman.github.io/fuzzy-picker
 A super basic example of the component:
 
 ```javascript
-import FuzzyPicker from 'react-fuzzy-searcher';
+import FuzzyPicker from 'react-fuzzy-picker';
 ReactDOM.render(<FuzzyPicker
   isOpen={true}
-  onClose={() => console.log('You closed the fuzzy-searcher')}
+  onClose={() => console.log('You closed the fuzzy-picker')}
   onChange={choice => console.log('You picked', choice)}
   items={["foo", "bar", "baz"]}
 />, element);
@@ -28,18 +28,18 @@ to be controlled, ie, ties in a parent component's state to keep track of whethe
 closed. Don't want that, or would rather an uncontrolled varient? Wrap it in a `FuzzyWrapper`:
 
 ```javascript
-import FuzzyPicker, {FuzzyWrapper} from 'react-fuzzy-searcher';
+import FuzzyPicker, {FuzzyWrapper} from 'react-fuzzy-picker';
 // This is the code from above, just wrapped in a factory function.
 function renderFuzzyPicker(isOpen, onClose) {
   return <FuzzyPicker
     isOpen={true}
-    onClose={() => console.log('You closed the fuzzy-searcher')}
+    onClose={() => console.log('You closed the fuzzy-picker')}
     onChange={choice => console.log('You picked', choice)}
     items={["foo", "bar", "baz"]}
   />;
 }
 
-// Here, we check what key must be pressed to open the fuzzy searcher
+// Here, we check what key must be pressed to open the fuzzy picker
 // We'll use the '/' key for this example.
 function isCorrectKeyPressed(event) {
   return e.key === '/';
@@ -51,17 +51,17 @@ ReactDOM.render(<FuzzyWrapper
 />, element);
 ```
 
-With the above, pressing `/` will open the fuzzy searcher (and you don't have to worry about
+With the above, pressing `/` will open the fuzzy picker (and you don't have to worry about
 managing that state.)
 
 ### Asynchronous Items
 Sometimes, you want to fetch items asynchronously. Here's how you'd do that here.
 
 ```javascript
-import {AsyncFuzzyPicker} from 'react-fuzzy-searcher';
+import {AsyncFuzzyPicker} from 'react-fuzzy-picker';
 ReactDOM.render(<AsyncFuzzyPicker
   isOpen={true}
-  onClose={() => console.log('You closed the fuzzy-searcher')}
+  onClose={() => console.log('You closed the fuzzy-picker')}
   onChange={choice => console.log('You picked', choice)}
 
   // Here's where it gets interesting. This prop takes a function, and expects a promise to be
@@ -87,14 +87,14 @@ A component for fuzzy searching through a collection of items.
 ```javascript
 <FuzzyPicker
   isOpen={true}
-  onClose={() => console.log('You closed the fuzzy-searcher')}
+  onClose={() => console.log('You closed the fuzzy-picker')}
   onChange={choice => console.log('You picked', choice)}
   items={["foo", "bar", "baz"]}
 />
 ```
 
 Props:
-- `label`: A string, a label to print above the fuzzysearcher textbox.
+- `label`: A string, a label to print above the fuzzy-picker textbox.
 - `items`: An array of strings. These are a "haystack" of all items. THis is searched against to
   find a match.
 - `displayCount`: An integer, how many matches to show at maximum.
@@ -113,7 +113,7 @@ An asynchronous version of the `FuzzyPicker` component.
 ```javascript
 <AsyncFuzzyPicker
   isOpen={true}
-  onClose={() => console.log('You closed the fuzzy-searcher')}
+  onClose={() => console.log('You closed the fuzzy-picker')}
   onChange={choice => console.log('You picked', choice)}
   label="Fuzzy Picker Label"
 
@@ -156,13 +156,13 @@ A wrapper component that controls a `FuzzyFinder` and will bind its opening to a
 function renderFuzzyPicker(isOpen, onClose) {
   return <FuzzyPicker
     isOpen={true}
-    onClose={() => console.log('You closed the fuzzy-searcher')}
+    onClose={() => console.log('You closed the fuzzy-picker')}
     onChange={choice => console.log('You picked', choice)}
     items={["foo", "bar", "baz"]}
   />;
 }
 
-// Here, we check what key must be pressed to open the fuzzy searcher
+// Here, we check what key must be pressed to open the fuzzy picker
 // We'll use the '/' key for this example.
 function isCorrectKeyPressed(event) {
   return e.key === '/';

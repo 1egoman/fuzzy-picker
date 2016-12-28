@@ -1,12 +1,5 @@
 import React from 'react';
 
-/*
- * <FuzzyWrapper hotkey="/" popup={(onClose) => {
- *   return <FuzzyPicker onClose={onClose} (my props here...) />
- * }} />
- *
- */
-
 export default class FuzzyWrapper extends React.Component {
   constructor(props) {
     super();

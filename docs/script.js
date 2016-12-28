@@ -1,4 +1,4 @@
-import {FuzzySearcher, AsyncFuzzySearcher, FuzzyWrapper} from '../src';
+import {FuzzyPicker, AsyncFuzzyPicker, FuzzyWrapper} from '../src';
 
 // React
 import React from 'react';
@@ -20,7 +20,7 @@ class FuzzySearchExample extends React.Component {
         try searching for <code>lorem</code>!
       </p>}
 
-      <FuzzySearcher
+      <FuzzyPicker
         {...this.props}
         onChange={choice => {
           this.setState({choice});

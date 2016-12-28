@@ -1,5 +1,5 @@
 import React from 'react';
-import {FuzzySearcher, AsyncFuzzySearcher, FuzzyWrapper} from '../../src';
+import {FuzzyPicker, AsyncFuzzyPicker, FuzzyWrapper} from '../../src';
 import {mount, shallow} from 'enzyme';
 import jsdom from 'jsdom';
 import assert from 'assert';
@@ -25,7 +25,7 @@ describe('Funnies Component', function() {
   });
 
   it('should be empty when closed', function() {
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={false}
       label="My Label"
       items={['foo', 'bar', 'baz']}
@@ -34,7 +34,7 @@ describe('Funnies Component', function() {
   });
 
   it('should by default have no items and have no input text (when open)', function() {
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       label="My Label"
       items={['foo', 'bar', 'baz']}
@@ -46,7 +46,7 @@ describe('Funnies Component', function() {
   });
 
   it('should show how many items its told to', function() {
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       label="My Label"
       displayCount={2}
@@ -61,7 +61,7 @@ describe('Funnies Component', function() {
   });
 
   it('should find items when user searches for them', function() {
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       items={['foo', 'food', 'follow', 'bar', 'baz']}
     />), elem;
@@ -77,7 +77,7 @@ describe('Funnies Component', function() {
 
   it('should be able to move up and down in the list', function() {
     // Initialze the component with 'f' in the input.
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       items={['foo', 'food', 'follow', 'fake']}
       cycleAtEndsOfList={false}
@@ -166,7 +166,7 @@ describe('Funnies Component', function() {
 
   it('should be able to move up and down past the bounds in the list when told to', function() {
     // Initialze the component with 'f' in the input.
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       items={['foo', 'food', 'follow', 'fake', 'filled']}
       cycleAtEndsOfList={true}
@@ -188,7 +188,7 @@ describe('Funnies Component', function() {
 
   it('should be able to select an item', function() {
     let onChangeSpy = sinon.spy();
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       items={['foo', 'food', 'follow', 'bar', 'baz']}
       onChange={onChangeSpy}
@@ -203,7 +203,7 @@ describe('Funnies Component', function() {
 
   it('should be able to listen for item highlight updates', function() {
     let onChangeSpy = sinon.spy(), preventDefault = sinon.spy();
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       items={['foo', 'food', 'follow', 'bar', 'baz']}
       onChangeHighlightedItem={onChangeSpy}
@@ -219,7 +219,7 @@ describe('Funnies Component', function() {
 
   it('should be able to be closed with escape', function() {
     let onCloseSpy = sinon.spy();
-    let component = shallow(<FuzzySearcher
+    let component = shallow(<FuzzyPicker
       isOpen={true}
       onClose={onCloseSpy}
       items={['foo', 'bar', 'baz']}

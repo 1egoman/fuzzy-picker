@@ -11,8 +11,8 @@ A live demo is available here: https://1egoman.github.io/fuzzy-picker
 A super basic example of the component:
 
 ```javascript
-import FuzzySearcher from 'react-fuzzy-searcher';
-ReactDOM.render(<FuzzySearcher
+import FuzzyPicker from 'react-fuzzy-searcher';
+ReactDOM.render(<FuzzyPicker
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
@@ -27,10 +27,10 @@ to be controlled, ie, ties in a parent component's state to keep track of whethe
 closed. Don't want that, or would rather an uncontrolled varient? Wrap it in a `FuzzyWrapper`:
 
 ```javascript
-import FuzzySearcher, {FuzzyWrapper} from 'react-fuzzy-searcher';
+import FuzzyPicker, {FuzzyWrapper} from 'react-fuzzy-searcher';
 // This is the code from above, just wrapped in a factory function.
-function renderFuzzySearcher(isOpen, onClose) {
-  return <FuzzySearcher
+function renderFuzzyPicker(isOpen, onClose) {
+  return <FuzzyPicker
     isOpen={true}
     onClose={() => console.log('You closed the fuzzy-searcher')}
     onChange={choice => console.log('You picked', choice)}
@@ -46,7 +46,7 @@ function isCorrectKeyPressed(event) {
 
 ReactDOM.render(<FuzzyWrapper
   isKeyPressed={isCorrectKeyPressed}
-  popup={renderFuzzySearcher}
+  popup={renderFuzzyPicker}
 />, element);
 ```
 
@@ -57,8 +57,8 @@ managing that state.)
 Sometimes, you want to fetch items asynchronously. Here's how you'd do that here.
 
 ```javascript
-import {AsyncFuzzySearcher} from 'react-fuzzy-searcher';
-ReactDOM.render(<AsyncFuzzySearcher
+import {AsyncFuzzyPicker} from 'react-fuzzy-searcher';
+ReactDOM.render(<AsyncFuzzyPicker
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
@@ -80,11 +80,11 @@ ReactDOM.render(<AsyncFuzzySearcher
 
 ## Documentation
 
-### `FuzzySearcher`
+### `FuzzyPicker`
 A component for fuzzy searching through a collection of items.
 
 ```javascript
-<FuzzySearcher
+<FuzzyPicker
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
@@ -105,16 +105,16 @@ Props:
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
   background, this callback is fired. Passed zero arguments.
 
-### `AsyncFuzzySearcher`
+### `AsyncFuzzyPicker`
 
-An asynchronous version of the `FuzzySearcher` component.
+An asynchronous version of the `FuzzyPicker` component.
 
 ```javascript
-<AsyncFuzzySearcher
+<AsyncFuzzyPicker
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
-  label="Fuzzy Searcher Label"
+  label="Fuzzy Picker Label"
 
   // Here's where it gets interesting. This prop takes a function, and expects a promise to be
   returned with a list of values that should be specified.
@@ -152,8 +152,8 @@ A wrapper component that controls a `FuzzyFinder` and will bind its opening to a
 
 ```javascript
 // This is the code from above, just wrapped in a factory function.
-function renderFuzzySearcher(isOpen, onClose) {
-  return <FuzzySearcher
+function renderFuzzyPicker(isOpen, onClose) {
+  return <FuzzyPicker
     isOpen={true}
     onClose={() => console.log('You closed the fuzzy-searcher')}
     onChange={choice => console.log('You picked', choice)}
@@ -167,7 +167,7 @@ function isCorrectKeyPressed(event) {
   return e.key === '/';
 }
 
-<FuzzyWrapper isKeyPressed={isCorrectKeyPressed} popup={renderFuzzySearcher} />
+<FuzzyWrapper isKeyPressed={isCorrectKeyPressed} popup={renderFuzzyPicker} />
 ```
 
 

@@ -12,55 +12,15 @@
   </head>
   <body>
     <a class="github-fork-ribbon" href="https://github.com/1egoman/funnies" title="Fork me on GitHub">Fork me on GitHub</a>
-    <div class="header">
-      <div class="inner-wrapper">
-        <div class="name-wrapper">
-          <img src="funnies.svg" />
-          <h1>Funnies</h1>
-        </div>
-        <p>
-          A flexible way to add funny loading messages to
-          webapps with optional react support.
-        </p>
-      </div>
-    </div>
-    <div class="header-bar">
-      <div class="inner-wrapper">
-        <iframe src="https://ghbtns.com/github-btn.html?user=1egoman&repo=funnies&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-        <span>&nbsp;</span>
-        <a target="_blank" href="//github.com/1egoman/funnies/issues/6" class="button">Contribute your own funny message!</a>
-      </div>
-    </div>
-    <div class="wrapper">
-      <h2>React</h2>
+
+    <div class="centered">
+      <h1>React Fuzzy Searcher</h1>
       <p>
-        The funnies react component is a drop-in solution to create a simple loading indicator.
-        To keep users interested, the loading message is periodically refreshed (or if you'd rather,
-        this can be turned off.)
+        A React component to open a fuzzy searcher (similar to Sublime Text's command palette) and
+        search through a list of things.
       </p>
-        <h4>Props:</h4>
-        <ul>
-          <li>
-            <code>interval</code>: The amount of time before the current message changes.
-          </li>
-          <li>
-            <code>customMessages</code>: An array of custom messages to add into the funny message
-            list.
-          </li>
-          <li>
-            <code>options</code>: Options to pass through to the backing Funnies instance's
-            constructor. 
-          </li>
-        </ul>
-      <div class="live-example">
-        <h3>Minimal Usage</h3>
-        <div class="funnies-wrapper" id="react-1"></div>
-        <h4>Code:</h4>
-        <pre>
-import {FunniesComponent} from 'funnies';
-ReactDOM.render(&lt;FunniesComponent /&gt;, elem);
-        </pre>
-      </div>
+
+      <div id="react"></div>
     </div>
 
     <div class="footer">

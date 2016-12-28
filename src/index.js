@@ -94,11 +94,12 @@ export class FuzzySearcher extends React.Component {
     if (value.length) {
       // Pick the closest matching items if possible.
       let items = this.state.haystack.filter(item => fuzzysearch(value, item));
-      this.setState({items: items.slice(0, this.props.displayCount)});
+      this.setState({items: items.slice(0, this.props.displayCount), selectedIndex: 0});
     } else {
       // initially, show an empty picker.
-      this.setState({items: this.getInitialItems()});
+      this.setState({items: this.getInitialItems(), selectedIndex: 0});
     }
+
   }
 
   // Highlight the given item

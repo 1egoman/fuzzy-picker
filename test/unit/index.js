@@ -5,7 +5,7 @@ import jsdom from 'jsdom';
 import assert from 'assert';
 import sinon from 'sinon';
 
-describe('Funnies Component', function() {
+describe('React Picker Component', function() {
   // from mocha-jsdom https://github.com/rstacruz/mocha-jsdom/blob/master/index.js#L80
   function propagateToGlobal(window) {
     for (let key in window) {

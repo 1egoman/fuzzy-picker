@@ -8,6 +8,7 @@
 
 ## Demo and Examples
 A live demo is available here: https://1egoman.github.io/fuzzy-picker
+
 A super basic example of the component:
 
 ```javascript

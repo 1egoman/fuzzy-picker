@@ -14,8 +14,8 @@ const paths = {
 
 const input = path.join(paths.src, 'index.js');
 const outputName = {
-  dev: 'funnies.dev.js',
-  prod: 'funnies.min.js',
+  dev: 'react-picker.dev.js',
+  prod: 'react-picker.min.js',
 };
 
 gulp.task('watch', () => {

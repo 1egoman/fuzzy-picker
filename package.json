@@ -1,7 +1,7 @@
 {
-  "name": "funnies",
-  "version": "1.2.0",
-  "description": "Make user's laugh when your app is loading.",
+  "name": "react-fuzzy-searcher",
+  "version": "0.1.0",
+  "description": "Search through a collection of items similar to sublime text",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha test/unit/index.js --compilers js:babel-register",
@@ -13,17 +13,14 @@
     "url": "https://github.com/1egoman/funnies.git"
   },
   "keywords": [
-    "funny",
-    "funnies",
-    "loading message",
-    "funny loading message",
-    "loading",
-    "funny loading",
-    "jeopardy",
-    "thinking",
-    "react",
-    "react-loading",
-    "react-funny"
+    "fuzzy",
+    "search",
+    "fuzzy search",
+    "sublime",
+    "ctrl p",
+    "command p",
+    "cmd p",
+    "picker"
   ],
   "author": "Ryan Gaus",
   "license": "MIT",
@@ -76,9 +73,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "fuzzysearch": "^1.0.3",
-    "lodash": "^4.13.1",
-    "react-addons-css-transition-group": "^15.1.0"
+    "fuzzysearch": "^1.0.3"
   },
   "peerDependencies": {
     "react": "^15.1.0",

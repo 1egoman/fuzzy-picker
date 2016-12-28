@@ -58,6 +58,16 @@ gulp.task('prod', () => {
     .pipe(gulp.dest(paths.dest));
 });
 
+// before release, build the styles for the component
+gulp.task('build-scss', () => {
+  // Build sass
+  return gulp.src('styles/index.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(gulp.dest('styles/'))
+  .pipe(connect.reload());
+});
+
+
 gulp.task('babel', () => {
   return gulp.src(path.join(paths.src, '**/*.js'))
     .pipe(babel())
@@ -105,7 +115,7 @@ gulp.task('example-build-scss', () => {
   .pipe(sass().on('error', sass.logError))
   .pipe(gulp.dest('docs/css'))
   .pipe(connect.reload());
-})
+});
 
 gulp.task('example', [
   'example-server',
@@ -114,4 +124,4 @@ gulp.task('example', [
   'example-watch-scss',
   'watch',
 ]);
-gulp.task('default', ['babel', 'dev', 'prod']);
+gulp.task('default', ['babel', 'dev', 'prod', 'build-scss']);

@@ -7,6 +7,11 @@
 
 ![Here's what it looks like!](assets/example.gif)
 
+## Installing
+```
+npm install --save react-fuzzy-picker
+```
+
 ## Demo and Examples
 A live demo is available here: https://1egoman.github.io/fuzzy-picker
 

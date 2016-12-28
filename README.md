@@ -37,15 +37,15 @@ ReactDOM.render(<FuzzyPicker
 
 The above renders, however, the component is "stuck" open. This is because the component is written
 to be controlled, ie, ties in a parent component's state to keep track of whether is is open or
-closed. Don't want that, or would rather an uncontrolled varient? Wrap it in a `FuzzyWrapper`:
+closed. Don't want that, or would rather an uncontrolled variant? Wrap it in a `FuzzyWrapper`:
 
 ```javascript
 import FuzzyPicker, {FuzzyWrapper} from 'react-fuzzy-picker';
 // This is the code from above, just wrapped in a factory function.
 function renderFuzzyPicker(isOpen, onClose) {
   return <FuzzyPicker
-    isOpen={true}
-    onClose={() => console.log('You closed the fuzzy-picker')}
+    isOpen={isOpen}
+    onClose={onClose}
     onChange={choice => console.log('You picked', choice)}
     items={["foo", "bar", "baz"]}
   />;
@@ -54,7 +54,7 @@ function renderFuzzyPicker(isOpen, onClose) {
 // Here, we check what key must be pressed to open the fuzzy picker
 // We'll use the '/' key for this example.
 function isCorrectKeyPressed(event) {
-  return e.key === '/';
+  return event.key === '/';
 }
 
 ReactDOM.render(<FuzzyWrapper

@@ -1,6 +1,7 @@
 $fuzzy-gray-muted: #DDD;
 $fuzzy-gray-loud: #AAA;
 $fuzzy-accent: #51c4c4;
+$fuzzy-zindex: 100;
 
 .fuzzy-switcher-background {
   background: rgba(0, 0, 0, 0.2);
@@ -14,6 +15,8 @@ $fuzzy-accent: #51c4c4;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  z-index: $fuzzy-zindex;
 
   .fuzzy-switcher {
     max-width: 600px;

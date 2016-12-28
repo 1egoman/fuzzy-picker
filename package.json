@@ -1,5 +1,5 @@
 {
-  "name": "react-fuzzy-searcher",
+  "name": "react-fuzzy-picker",
   "version": "0.2.0",
   "description": "Search through a collection of items similar to sublime text",
   "main": "dist/index.js",

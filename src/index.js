@@ -99,7 +99,6 @@ export class FuzzySearcher extends React.Component {
       // initially, show an empty picker.
       this.setState({items: this.getInitialItems(), selectedIndex: 0});
     }
-
   }
 
   // Highlight the given item
@@ -125,11 +124,12 @@ export class FuzzySearcher extends React.Component {
 
           <input
             type="text"
+            className="fuzzy-input"
             ref={ref => ref && ref.focus()}
             onKeyDown={this.onKeyDown.bind(this)}
             onChange={this.onInputChanged.bind(this)}
           />
-          <ul>
+          <ul className="fuzzy-items">
             {this.state.items.map((item, ct) => {
               // render each item
               return <li
@@ -149,11 +149,20 @@ export class FuzzySearcher extends React.Component {
     }
   }
 }
+FuzzySearcher.propTypes = {
+  items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  label: React.PropTypes.string,
+  displayCount: React.PropTypes.number,
+  cycleAtEndsOfList: React.PropTypes.bool,
+  onChangeHighlightedItem: React.PropTypes.func,
+  onChange: React.PropTypes.func,
+  onClose: React.PropTypes.func,
+}
 FuzzySearcher.defaultProps = {
-  label: 'Search', // The text above the searchbox that describes what's happening
   items: [], // Initial array of items
+  label: 'Search', // The text above the searchbox that describes what's happening
   displayCount: 5, // How many items to display at once
-  cycleAtEndsOfList: false, // When a user arrows past the end of the list, should the highlight wrap?
+  cycleAtEndsOfList: true, // When a user arrows past the end of the list, should the highlight wrap?
   onChangeHighlightedItem(item) {}, // Called when the user highlights a new item
   onChange(item) {}, // Called when an item is selected
   onClose() {}, // Called when the popup is closed
@@ -176,6 +185,10 @@ export class AsyncFuzzySearcher extends FuzzySearcher {
     });
   }
 }
+AsyncFuzzySearcher.propTypes = Object.assign({}, FuzzySearcher.PropTypes, {
+  fetchItems: React.PropTypes.func.isRequired,
+});
+delete AsyncFuzzySearcher.propTypes.items; // reset the value of items since that isn't needed here.
 AsyncFuzzySearcher.defaultProps = Object.assign({}, FuzzySearcher.defaultProps, {
   // by default, don't show any items.
   fetchItems() {
@@ -225,3 +238,11 @@ export class FuzzyWrapper extends React.Component {
     );
   }
 }
+FuzzyWrapper.PropTypes = {
+  isKeyPressed: React.PropTypes.func.isRequired,
+  popup: React.PropTypes.func.isRequired,
+};
+FuzzyWrapper.defaultProps = {
+  isKeyPressed: () => false,
+  popup: () => null,
+};

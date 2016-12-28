@@ -13,7 +13,6 @@ ReactDOM.render(<FuzzySearcher
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
   items={["foo", "bar", "baz"]}
-  label="Fuzzy Searcher Label"
 />, element);
 ```
 
@@ -32,7 +31,6 @@ function renderFuzzySearcher(isOpen, onClose) {
     onClose={() => console.log('You closed the fuzzy-searcher')}
     onChange={choice => console.log('You picked', choice)}
     items={["foo", "bar", "baz"]}
-    label="Fuzzy Searcher Label"
   />;
 }
 
@@ -48,11 +46,11 @@ ReactDOM.render(<FuzzyWrapper
 />, element);
 ```
 
-With the above, pressing `/` will open the fuzzy searcher (and you don't have to worry about that
-state.)
+With the above, pressing `/` will open the fuzzy searcher (and you don't have to worry about
+managing that state.)
 
-### Async
-Sometimes, you want to fetch items async. Here's how you'd do that here.
+### Asynchronous Items
+Sometimes, you want to fetch items asynchronously. Here's how you'd do that here.
 
 ```javascript
 import {AsyncFuzzySearcher} from 'react-fuzzy-searcher';
@@ -60,7 +58,6 @@ ReactDOM.render(<AsyncFuzzySearcher
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
-  label="Fuzzy Searcher Label"
 
   // Here's where it gets interesting. This prop takes a function, and expects a promise to be
   // returned with a list of values that should be specified.
@@ -88,7 +85,6 @@ A component for fuzzy searching through a collection of items.
   onClose={() => console.log('You closed the fuzzy-searcher')}
   onChange={choice => console.log('You picked', choice)}
   items={["foo", "bar", "baz"]}
-  label="Fuzzy Searcher Label"
 />
 ```
 
@@ -107,7 +103,7 @@ Props:
 
 ### `AsyncFuzzySearcher`
 
-An asyncronous version of the `FuzzySearcher` component.
+An asynchronous version of the `FuzzySearcher` component.
 
 ```javascript
 <AsyncFuzzySearcher
@@ -132,14 +128,15 @@ An asyncronous version of the `FuzzySearcher` component.
 
 
 Props:
-- `label`: A string, a label to print above the fuzzysearcher textbox.
-- `fetchItems`: A function called to asyncronously fetch new items for a given search phrase. Must
+- `label`: A string, a label to print above the fuzzy-finder textbox.
+- `fetchItems`: A function called to asynchronously fetch new items for a given search phrase. Must
   return a promise with an array of strings. For example, `value => Promise.resolve(["foo", "bar",
   "baz"])`
 - `displayCount`: An integer, how many matches to show at maximum.
-- `cycleAtEndsOfList`: A boolean, when a user arrows past the end of the list, should the highlight wrap?
-- `onChangeHighlightedItem`: a callback that is fired when the highlight changes within the
-  fuzzyfinder. Passed one argument, the newly highlighted item.
+- `cycleAtEndsOfList`: A boolean, when a user arrows past the end of the list, should the highlight
+  wrap around to the other end?
+- `onChangeHighlightedItem`: a callback that is fired when the highlight item changes within the
+  fuzzy-finder (because the user moved up or down). Passed one argument, the newly highlighted item.
 - `onChange`: When the user selects a final item, this callback is fired with that item. Passed one
   argument, the chosen item.
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
@@ -157,7 +154,6 @@ function renderFuzzySearcher(isOpen, onClose) {
     onClose={() => console.log('You closed the fuzzy-searcher')}
     onChange={choice => console.log('You picked', choice)}
     items={["foo", "bar", "baz"]}
-    label="Fuzzy Searcher Label"
   />;
 }
 

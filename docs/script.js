@@ -14,11 +14,15 @@ class FuzzySearchExample extends React.Component {
     return <div>
       {this.state.choice ? <p>
         You picked: <code>{this.state.choice}</code>!
-      </p> : <p>
-        Give it a try!
-        Press <code>Ctrl+p</code> or <code>&#8984;p</code> to open and
-        try searching for <code>lorem</code>!
-      </p>}
+      </p> : <span>
+        <p>
+          Give it a try!
+        </p>
+        <p>
+          Press <code>Ctrl+p</code> or <code>&#8984;p</code> to open and
+          try searching for <code>lorem</code>!
+        </p>
+      </span>}
 
       <FuzzyPicker
         {...this.props}

@@ -3,22 +3,30 @@
 @import 'normalize';
 @import 'font-awesome';
 $light-gray: #EEEEEE;
+$color: #51c4c4;
+$text-color: #333;
 
 body {
   font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
-  background-color: #51c4c4;
+  background-color: $color;
 
   // the container within the body
   .centered {
-    max-width: 600px;
+    max-width: 800px;
     margin: 3em auto;
 
     background: #FFF;
     padding: 2em;
+    font-size: 1.5em;
 
     // the header
     h1 {
       margin-top: 0px;
+      color: $text-color;
+    }
+
+    p {
+      color: $text-color;
     }
 
     // code blocks
@@ -29,6 +37,13 @@ body {
       border-radius: 3px;
       margin-left: 0.3em;
       margin-right: 0.3em;
+    }
+
+    a {
+      display: block;
+      color: darken($color, 20%);
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
     }
   }
 }

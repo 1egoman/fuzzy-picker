@@ -2617,12 +2617,16 @@ body {
   font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
   background-color: #51c4c4; }
   body .centered {
-    max-width: 600px;
+    max-width: 800px;
     margin: 3em auto;
     background: #FFF;
-    padding: 2em; }
+    padding: 2em;
+    font-size: 1.5em; }
     body .centered h1 {
-      margin-top: 0px; }
+      margin-top: 0px;
+      color: #333; }
+    body .centered p {
+      color: #333; }
     body .centered code {
       background: #EEEEEE;
       color: #BB3333;
@@ -2630,6 +2634,11 @@ body {
       border-radius: 3px;
       margin-left: 0.3em;
       margin-right: 0.3em; }
+    body .centered a {
+      display: block;
+      color: #2c8383;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em; }
 
 .footer {
   position: absolute;
@@ -2640,7 +2649,7 @@ body {
     text-align: center;
     padding: 1em; }
 
-.fuzzy-switcher-background {
+.fuzzy-picker-background {
   background: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
@@ -2651,28 +2660,29 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 100; }
-  .fuzzy-switcher-background .fuzzy-switcher {
+  .fuzzy-picker-background .fuzzy-picker {
     max-width: 600px;
     background: #FFF;
     border: 1px solid #DDD;
     border-radius: 4px;
     box-shadow: 0px 0px 16px #333;
+    font-size: 1rem;
     display: flex;
     flex-direction: column; }
-    .fuzzy-switcher-background .fuzzy-switcher .top-text {
+    .fuzzy-picker-background .fuzzy-picker .top-text {
       color: #AAA;
       margin-top: 0.5em;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
       font-size: 0.8em;
       user-select: none; }
-      .fuzzy-switcher-background .fuzzy-switcher .top-text .label {
+      .fuzzy-picker-background .fuzzy-picker .top-text .label {
         float: left; }
-      .fuzzy-switcher-background .fuzzy-switcher .top-text .instructions {
+      .fuzzy-picker-background .fuzzy-picker .top-text .instructions {
         float: right; }
-        .fuzzy-switcher-background .fuzzy-switcher .top-text .instructions span {
+        .fuzzy-picker-background .fuzzy-picker .top-text .instructions span {
           margin: 0.35em; }
-    .fuzzy-switcher-background .fuzzy-switcher input[type=text] {
+    .fuzzy-picker-background .fuzzy-picker input[type=text] {
       border: 1px solid #DDD;
       border-radius: 4px;
       outline: none;
@@ -2680,16 +2690,16 @@ body {
       font-size: 2.4em;
       padding: 1rem;
       margin: 0.5rem; }
-    .fuzzy-switcher-background .fuzzy-switcher ul {
+    .fuzzy-picker-background .fuzzy-picker ul {
       list-style-type: none;
       padding-left: 0px;
       margin-top: 0.2em;
       margin-bottom: 0.5em; }
-      .fuzzy-switcher-background .fuzzy-switcher ul li {
+      .fuzzy-picker-background .fuzzy-picker ul li {
         margin: 0.1em 0.5rem;
         padding: 0.6em 0.5em;
         border-radius: 4px;
         cursor: pointer; }
-        .fuzzy-switcher-background .fuzzy-switcher ul li.selected {
+        .fuzzy-picker-background .fuzzy-picker ul li.selected {
           background-color: #51c4c4;
           color: #FFF; }

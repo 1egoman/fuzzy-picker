@@ -115,8 +115,8 @@ export default class FuzzyPicker extends React.Component {
 
   render() {
     if (this.props.isOpen) {
-      return <div className="fuzzy-switcher-background" onClick={this.onClickOnBg.bind(this)}>
-        <div className="fuzzy-switcher">
+      return <div className="fuzzy-picker-background" onClick={this.onClickOnBg.bind(this)}>
+        <div className="fuzzy-picker">
           <span className="top-text">
             <span className="label">
               {this.props.label}

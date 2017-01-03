@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/1egoman/fuzzy-switcher.svg?branch=master)](https://travis-ci.org/1egoman/fuzzy-switcher)
+[![Build Status](https://travis-ci.org/1egoman/fuzzy-picker.svg?branch=master)](https://travis-ci.org/1egoman/fuzzy-picker)
 
 # React Fuzzy Picker
  A React component that implements a fuzzy picker (similar to Sublime Text's command palette or

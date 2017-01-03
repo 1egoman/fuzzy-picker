@@ -40,7 +40,7 @@ describe('React Picker Component', function() {
       items={['foo', 'bar', 'baz']}
     />), elem;
 
-    assert.equal(component.find('.label').first().text(), "My Label"); // label set correctly
+    assert.equal(component.find('.fuzzy-picker-label').first().text(), "My Label"); // label set correctly
     assert.equal(component.find('.fuzzy-input').first().text(), ''); // Input box should be empty
     assert.equal(component.find('.fuzzy-items li').length, 0); // should be no items shown
   });

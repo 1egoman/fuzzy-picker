@@ -19,8 +19,7 @@ class FuzzySearchExample extends React.Component {
           Give it a try!
         </p>
         <p>
-          Press <code>Ctrl+k</code> or <code>&#8984;k</code> to open and
-          try searching for <code>lorem</code>!
+          Press <code>/</code> to open and try searching for <code>lorem</code>!
         </p>
       </span>}
 
@@ -104,8 +103,8 @@ class FuzzySearchExample extends React.Component {
 // Use the FuzzyWrapper to control whether the fuzzy searcher is open or not.
 ReactDOM.render(<FuzzyWrapper
   isKeyPressed={e => {
-    // Either ctrl+p or command+p
-    return e.key === 'k' && (e.metaKey || e.ctrlKey);
+    // Press slash.
+    return e.key === '/';
   }}
   popup={(isOpen, onClose) => <FuzzySearchExample isOpen={isOpen} onClose={onClose} />}
 />, document.getElementById('react'));

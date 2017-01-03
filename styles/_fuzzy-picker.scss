@@ -30,7 +30,7 @@ $fuzzy-zindex: 100;
     display: flex;
     flex-direction: column;
 
-    .top-text {
+    .fuzzy-picker-top-text {
       color: $fuzzy-gray-loud;
       margin-top: 0.5em;
       margin-left: 0.5rem;
@@ -38,10 +38,10 @@ $fuzzy-zindex: 100;
       font-size: 0.8em;
       user-select: none;
 
-      .label {
+      .fuzzy-picker-label {
         float: left;
       }
-      .instructions {
+      .fuzzy-picker-instructions {
         float: right;
         span {
           margin: 0.35em;

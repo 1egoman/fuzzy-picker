@@ -117,11 +117,11 @@ export default class FuzzyPicker extends React.Component {
     if (this.props.isOpen) {
       return <div className="fuzzy-picker-background" onClick={this.onClickOnBg.bind(this)}>
         <div className="fuzzy-picker">
-          <span className="top-text">
-            <span className="label">
+          <span className="fuzzy-picker-top-text">
+            <span className="fuzzy-picker-label">
               {this.props.label}
             </span>
-            <span className="instructions">
+            <span className="fuzzy-picker-instructions">
               <span><strong>tab</strong> or <strong>↑↓</strong> to navigate</span>
               <span><strong>enter</strong> to select</span>
               <span><strong>esc</strong> to dismiss</span>

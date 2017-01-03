@@ -2669,18 +2669,18 @@ body {
     font-size: 1rem;
     display: flex;
     flex-direction: column; }
-    .fuzzy-picker-background .fuzzy-picker .top-text {
+    .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text {
       color: #AAA;
       margin-top: 0.5em;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
       font-size: 0.8em;
       user-select: none; }
-      .fuzzy-picker-background .fuzzy-picker .top-text .label {
+      .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text .fuzzy-picker-label {
         float: left; }
-      .fuzzy-picker-background .fuzzy-picker .top-text .instructions {
+      .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text .fuzzy-picker-instructions {
         float: right; }
-        .fuzzy-picker-background .fuzzy-picker .top-text .instructions span {
+        .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text .fuzzy-picker-instructions span {
           margin: 0.35em; }
     .fuzzy-picker-background .fuzzy-picker input[type=text] {
       border: 1px solid #DDD;

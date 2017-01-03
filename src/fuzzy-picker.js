@@ -131,7 +131,7 @@ export default class FuzzyPicker extends React.Component {
           <input
             type="text"
             className="fuzzy-input"
-            ref={ref => ref && ref.focus()}
+            autoFocus
             onKeyDown={this.onKeyDown.bind(this)}
             onChange={this.onInputChanged.bind(this)}
           />

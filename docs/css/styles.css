@@ -2659,7 +2659,8 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 25%;
+  padding-top: 300px;
+  padding-top: 25vh;
   z-index: 100; }
   .fuzzy-picker-background .fuzzy-picker {
     max-width: 600px;

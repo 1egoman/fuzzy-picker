@@ -15,7 +15,9 @@ $fuzzy-zindex: 100;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 25%;
+
+  padding-top: 300px; // fall back
+  padding-top: 25vh;
 
   z-index: $fuzzy-zindex;
 

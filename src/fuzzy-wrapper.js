@@ -11,7 +11,7 @@ export default class FuzzyWrapper extends React.Component {
     this.keyEvent = (function(event) {
       if (this.props.isKeyPressed(event)) {
         event.preventDefault();
-        this.setState({isOpen: true});
+        this.setState({isOpen: !this.state.isOpen});
       }
     }).bind(this);
   }

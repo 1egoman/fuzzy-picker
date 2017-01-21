@@ -75,6 +75,23 @@ describe('React Picker Component', function() {
     );
   });
 
+  it('should find items when user searches for them (and a user uses custom keys)', function() {
+    let component = shallow(<FuzzyPicker
+      isOpen={true}
+      items={[{value: 'foo'}, {value: 'food'}, {value: 'follow'}, {value: 'bar'}, {value: 'baz'}]}
+      listItemValue={item => item.value}
+      listItemComponent={item => <span>{item.value}</span>}
+    />), elem;
+    let input = component.find('.fuzzy-input').first();
+
+    // Enter 'f' into the textbox.
+    input.simulate('change', {target: {value: 'f'}});
+    assert.deepEqual(
+      component.find('.fuzzy-items li').map(n => n.text()),
+      ['foo', 'food', 'follow']
+    );
+  });
+
   it('should be able to move up and down in the list', function() {
     // Initialze the component with 'f' in the input.
     let component = shallow(<FuzzyPicker

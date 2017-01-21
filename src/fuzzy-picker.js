@@ -93,7 +93,10 @@ export default class FuzzyPicker extends React.Component {
   onInputChanged({target: {value}}) {
     if (value.length) {
       // Pick the closest matching items if possible.
-      let items = this.state.haystack.filter(item => fuzzysearch(value.toLowerCase(), item.toLowerCase()));
+      let items = this.state.haystack.filter(item => fuzzysearch(
+        value.toLowerCase(),
+        this.props.listItemValue(item).toLowerCase()
+      ));
       this.setState({items: items.slice(0, this.props.displayCount), selectedIndex: 0});
     } else {
       // initially, show an empty picker.
@@ -139,13 +142,13 @@ export default class FuzzyPicker extends React.Component {
             {this.state.items.map((item, ct) => {
               // render each item
               return <li
-                key={item}
+                key={this.props.listItemValue(item)}
                 className={classnames({
                   selected: ct === this.state.selectedIndex,
                 })}
                 onMouseOver={this.selectIndex.bind(this, ct)}
                 onClick={this.props.onChange.bind(this, this.state.items[ct])}
-              >{item}</li>;
+              >{this.props.listItemComponent(item)}</li>;
             })}
           </ul>
         </div>
@@ -156,14 +159,17 @@ export default class FuzzyPicker extends React.Component {
   }
 }
 FuzzyPicker.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  items: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
   label: React.PropTypes.string,
   displayCount: React.PropTypes.number,
   cycleAtEndsOfList: React.PropTypes.bool,
   onChangeHighlightedItem: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onClose: React.PropTypes.func,
-}
+
+  listItemComponent: React.PropTypes.func,
+  listItemValue: React.PropTypes.func,
+};
 FuzzyPicker.defaultProps = {
   label: 'Search', // The text above the searchbox that describes what's happening
   displayCount: 5, // How many items to display at once
@@ -171,4 +177,8 @@ FuzzyPicker.defaultProps = {
   onChangeHighlightedItem(item) {}, // Called when the user highlights a new item
   onChange(item) {}, // Called when an item is selected
   onClose() {}, // Called when the popup is closed
+
+  // By default, the item as its value (ie, each item is a string.)
+  listItemComponent(item) { return item; },
+  listItemValue(item) { return item; },
 };

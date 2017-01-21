@@ -101,7 +101,9 @@ A component for fuzzy searching through a collection of items.
   isOpen={true}
   onClose={() => console.log('You closed the fuzzy-picker')}
   onChange={choice => console.log('You picked', choice)}
-  items={["foo", "bar", "baz"]}
+  items={[{value: "foo"}, {value: "bar"}, {value: "baz"}]}
+  listItemComponent={item => <span>{item.value}</span>}
+  listItemValue={item => item.value}
 />
 ```
 

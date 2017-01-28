@@ -97,7 +97,7 @@ class FuzzySearchExample extends React.Component {
         ]}
 
         listItemValue={item => item.value}
-        listItemComponent={item => item.value}
+        listItemComponent={item => <span className="item-wrapper">{item.value}</span>}
       />
     </div>;
   }

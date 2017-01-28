@@ -109,7 +109,7 @@ A component for fuzzy searching through a collection of items.
 
 Props:
 - `label`: A string, a label to print above the fuzzy-picker textbox.
-- `items`: An array of strings. These are a "haystack" of all items. THis is searched against to
+- `items`: An array of strings. These are a "haystack" of all items. This is searched against to
   find a match.
 - `displayCount`: An integer, how many matches to show at maximum.
 - `cycleAtEndsOfList`: A boolean, when a user arrows past the end of the list, should the highlight wrap?
@@ -119,6 +119,11 @@ Props:
   argument, the chosen item.
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
   background, this callback is fired. Passed zero arguments.
+- `listItemComponent`: An optional function that allows a user to map each function to its
+  displayed component on the page. This is presentational only.
+- `listItemValue`: An optional function that maps each item to its string value to be searched
+  against. This function must always return a string. If omitted, the "default" is to map the item
+  directly to the output (ie, your data is a flat array of strings.)
 
 ### `AsyncFuzzyPicker`
 
@@ -147,19 +152,10 @@ An asynchronous version of the `FuzzyPicker` component.
 
 
 Props:
-- `label`: A string, a label to print above the fuzzy-finder textbox.
+- All props that can be passed to the above `FuzzyPicker` component, plus...
 - `fetchItems`: A function called to asynchronously fetch new items for a given search phrase. Must
   return a promise with an array of strings. For example, `value => Promise.resolve(["foo", "bar",
   "baz"])`
-- `displayCount`: An integer, how many matches to show at maximum.
-- `cycleAtEndsOfList`: A boolean, when a user arrows past the end of the list, should the highlight
-  wrap around to the other end?
-- `onChangeHighlightedItem`: a callback that is fired when the highlight item changes within the
-  fuzzy-finder (because the user moved up or down). Passed one argument, the newly highlighted item.
-- `onChange`: When the user selects a final item, this callback is fired with that item. Passed one
-  argument, the chosen item.
-- `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
-  background, this callback is fired. Passed zero arguments.
 
 ### `FuzzyWrapper`
 

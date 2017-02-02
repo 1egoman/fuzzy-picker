@@ -102,8 +102,8 @@ A component for fuzzy searching through a collection of items.
   onClose={() => console.log('You closed the fuzzy-picker')}
   onChange={choice => console.log('You picked', choice)}
   items={[{value: "foo"}, {value: "bar"}, {value: "baz"}]}
-  listItemComponent={item => <span>{item.value}</span>}
-  listItemValue={item => item.value}
+  renderItem={item => <span>{item.value}</span>}
+  itemValue={item => item.value}
 />
 ```
 
@@ -119,9 +119,9 @@ Props:
   argument, the chosen item.
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
   background, this callback is fired. Passed zero arguments.
-- `listItemComponent`: An optional function that allows a user to map each function to its
+- `renderItem`: An optional function that allows a user to map each function to its
   displayed component on the page. This is presentational only.
-- `listItemValue`: An optional function that maps each item to its string value to be searched
+- `itemValue`: An optional function that maps each item to its string value to be searched
   against. This function must always return a string. If omitted, the "default" is to map the item
   directly to the output (ie, your data is a flat array of strings.)
 

@@ -79,8 +79,8 @@ describe('React Picker Component', function() {
     let component = shallow(<FuzzyPicker
       isOpen={true}
       items={[{value: 'foo'}, {value: 'food'}, {value: 'follow'}, {value: 'bar'}, {value: 'baz'}]}
-      listItemValue={item => item.value}
-      listItemComponent={item => <span>{item.value}</span>}
+      itemValue={item => item.value}
+      renderItem={item => <span>{item.value}</span>}
     />), elem;
     let input = component.find('.fuzzy-input').first();
 

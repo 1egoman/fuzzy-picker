@@ -95,7 +95,7 @@ export default class FuzzyPicker extends React.Component {
       // Pick the closest matching items if possible.
       let items = this.state.haystack.filter(item => fuzzysearch(
         value.toLowerCase(),
-        this.props.listItemValue(item).toLowerCase()
+        this.props.itemValue(item).toLowerCase()
       ));
       this.setState({items: items.slice(0, this.props.displayCount), selectedIndex: 0});
     } else {
@@ -142,13 +142,13 @@ export default class FuzzyPicker extends React.Component {
             {this.state.items.map((item, ct) => {
               // render each item
               return <li
-                key={this.props.listItemValue(item)}
+                key={this.props.itemValue(item)}
                 className={classnames({
                   selected: ct === this.state.selectedIndex,
                 })}
                 onMouseOver={this.selectIndex.bind(this, ct)}
                 onClick={this.props.onChange.bind(this, this.state.items[ct])}
-              >{this.props.listItemComponent(item)}</li>;
+              >{this.props.renderItem(item)}</li>;
             })}
           </ul>
         </div>
@@ -167,8 +167,8 @@ FuzzyPicker.propTypes = {
   onChange: React.PropTypes.func,
   onClose: React.PropTypes.func,
 
-  listItemComponent: React.PropTypes.func,
-  listItemValue: React.PropTypes.func,
+  renderItem: React.PropTypes.func,
+  itemValue: React.PropTypes.func,
 };
 FuzzyPicker.defaultProps = {
   label: 'Search', // The text above the searchbox that describes what's happening
@@ -179,6 +179,6 @@ FuzzyPicker.defaultProps = {
   onClose() {}, // Called when the popup is closed
 
   // By default, the item as its value (ie, each item is a string.)
-  listItemComponent(item) { return item; },
-  listItemValue(item) { return item; },
+  renderItem(item) { return item; },
+  itemValue(item) { return item; },
 };

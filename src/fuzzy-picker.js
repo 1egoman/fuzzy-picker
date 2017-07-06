@@ -73,11 +73,13 @@ export default class FuzzyPicker extends React.Component {
       case 'Enter': { // Enter key
         let item = this.state.items[this.state.selectedIndex];
         if (item) {
+          this.setState({items: this.getInitialItems()});
           this.props.onChange(item);
         }
         break;
       }
       case 'Escape': {
+        this.setState({items: this.getInitialItems()});
         this.props.onClose();
       }
     }

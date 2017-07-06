@@ -120,10 +120,12 @@ Props:
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
   background, this callback is fired. Passed zero arguments.
 - `renderItem`: An optional function that allows a user to map each function to its
-  displayed component on the page. This is presentational only.
+  displayed component on the page. This is presentational only. If `itemValue` is specified, this
+  prop must also be specified.
 - `itemValue`: An optional function that maps each item to its string value to be searched
   against. This function must always return a string. If omitted, the "default" is to map the item
-  directly to the output (ie, your data is a flat array of strings.)
+  directly to the output (ie, your data is a flat array of strings.) If `renderItem` is specified,
+  this prop must also be specified.
 
 ### `AsyncFuzzyPicker`
 

@@ -7,7 +7,6 @@ export default class FuzzyPicker extends React.Component {
     super();
     this.state = {
       selectedIndex: 0, // which item is selected?
-      haystack: props.items, // all items that can be searched through
       items: this.getInitialItems(), // the items wich are displayed in the fuzzy find list
     };
   }
@@ -95,7 +94,7 @@ export default class FuzzyPicker extends React.Component {
   onInputChanged({target: {value}}) {
     if (value.length) {
       // Pick the closest matching items if possible.
-      let items = this.state.haystack.filter(item => fuzzysearch(
+      let items = this.props.items.filter(item => fuzzysearch(
         value.toLowerCase(),
         this.props.itemValue(item).toLowerCase()
       ));

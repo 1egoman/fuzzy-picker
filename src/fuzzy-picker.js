@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import fuzzysearch from 'fuzzysearch';
@@ -160,16 +161,16 @@ export default class FuzzyPicker extends React.Component {
   }
 }
 FuzzyPicker.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
-  label: React.PropTypes.string,
-  displayCount: React.PropTypes.number,
-  cycleAtEndsOfList: React.PropTypes.bool,
-  onChangeHighlightedItem: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  onClose: React.PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  label: PropTypes.string,
+  displayCount: PropTypes.number,
+  cycleAtEndsOfList: PropTypes.bool,
+  onChangeHighlightedItem: PropTypes.func,
+  onChange: PropTypes.func,
+  onClose: PropTypes.func,
 
-  renderItem: React.PropTypes.func,
-  itemValue: React.PropTypes.func,
+  renderItem: PropTypes.func,
+  itemValue: PropTypes.func,
 };
 FuzzyPicker.defaultProps = {
   label: 'Search', // The text above the searchbox that describes what's happening

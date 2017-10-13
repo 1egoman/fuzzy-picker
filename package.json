@@ -57,6 +57,7 @@
     "jshint-stylish": "^1.0.0",
     "mkdirp": "^0.5.0",
     "mocha": "^2.5.3",
+    "prop-types": "^15.6.0",
     "react": "^15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "^15.4.1",
@@ -79,6 +80,7 @@
     "fuzzysearch": "^1.0.3"
   },
   "peerDependencies": {
+    "prop-types": "^15.6.0",
     "react": "^15.1.0",
     "react-dom": "^15.4.1"
   }

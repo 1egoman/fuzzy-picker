@@ -1,6 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
-import fuzzysearch from 'fuzzysearch';
+import PropTypes from "prop-types";
 
 import FuzzyPicker from './fuzzy-picker';
 
@@ -17,7 +16,7 @@ export default class AsyncFuzzyPicker extends FuzzyPicker {
   }
 }
 AsyncFuzzyPicker.propTypes = Object.assign({}, FuzzyPicker.PropTypes, {
-  fetchItems: React.PropTypes.func.isRequired,
+  fetchItems: PropTypes.func.isRequired,
 });
 delete AsyncFuzzyPicker.propTypes.items; // reset the value of items since that isn't needed here.
 AsyncFuzzyPicker.defaultProps = Object.assign({}, FuzzyPicker.defaultProps, {

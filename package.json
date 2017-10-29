@@ -76,7 +76,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "fuzzysearch": "^1.0.3"
+    "fuzzysearch": "^1.0.3",
+    "prop-types": "^15.6.0"
   },
   "peerDependencies": {
     "react": "^15.1.0",

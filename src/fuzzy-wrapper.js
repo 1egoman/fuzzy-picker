@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 export default class FuzzyWrapper extends React.Component {
   constructor(props) {
@@ -34,8 +35,8 @@ export default class FuzzyWrapper extends React.Component {
   }
 }
 FuzzyWrapper.PropTypes = {
-  isKeyPressed: React.PropTypes.func.isRequired,
-  popup: React.PropTypes.func.isRequired,
+  isKeyPressed: PropTypes.func.isRequired,
+  popup: PropTypes.func.isRequired,
 };
 FuzzyWrapper.defaultProps = {
   isKeyPressed: () => false,

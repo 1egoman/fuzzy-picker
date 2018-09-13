@@ -4,7 +4,7 @@ Here's what you need to do to get a local, running version of the codebase:
 ```
 git clone git@github.com:1egoman/fuzzy-picker.git
 cd fuzzy-picker
-npm install
+npm install --dev
 
 # to build the example (open localhost:8080 in a browser)
 gulp example

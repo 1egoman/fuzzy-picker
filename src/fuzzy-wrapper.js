@@ -34,7 +34,7 @@ export default class FuzzyWrapper extends React.Component {
     );
   }
 }
-FuzzyWrapper.PropTypes = {
+FuzzyWrapper.propTypes = {
   isKeyPressed: PropTypes.func.isRequired,
   popup: PropTypes.func.isRequired,
 };

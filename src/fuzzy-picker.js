@@ -8,7 +8,7 @@ export default class FuzzyPicker extends React.Component {
     super();
     this.state = {
       selectedIndex: 0, // which item is selected?
-      items: this.getInitialItems(), // the items wich are displayed in the fuzzy find list
+      items: this.getInitialItems(props), // the items wich are displayed in the fuzzy find list
     };
   }
 
@@ -73,7 +73,7 @@ export default class FuzzyPicker extends React.Component {
       case 'Enter': { // Enter key
         let item = this.state.items[this.state.selectedIndex];
         if (item) {
-          this.setState({items: this.getInitialItems()});
+          this.setState({items: this.getInitialItems(this.props)});
           this.props.onChange(item);
           if (this.props.autoCloseOnEnter) {
             this.props.onClose();
@@ -82,14 +82,22 @@ export default class FuzzyPicker extends React.Component {
         break;
       }
       case 'Escape': {
-        this.setState({items: this.getInitialItems()});
+        this.setState({items: this.getInitialItems(this.props)});
         this.props.onClose();
       }
     }
   }
 
-  getInitialItems() {
-    return [];
+  // Get the list of initial items.
+  // Defaults to none, but the 'showAllItems' property can be enabled
+  // to show all items by default.
+  getInitialItems(props) {
+    if (props.showAllItems) {
+      return props.items;
+    }
+    else {
+      return [];
+    }
   }
 
   // When the user types into the textbox, this handler is called.
@@ -104,8 +112,8 @@ export default class FuzzyPicker extends React.Component {
       ));
       this.setState({items: items.slice(0, this.props.displayCount), selectedIndex: 0});
     } else {
-      // initially, show an empty picker.
-      this.setState({items: this.getInitialItems(), selectedIndex: 0});
+      // initially, show an empty picker or all items.
+      this.setState({items: this.getInitialItems(this.props), selectedIndex: 0});
     }
   }
 
@@ -130,7 +138,7 @@ export default class FuzzyPicker extends React.Component {
               {this.props.label}
             </span>
             <span className="fuzzy-picker-instructions">
-              <span><strong>tab</strong> or <strong>↑↓</strong> to navigate</span>
+              <span><strong>tab</strong> or <strong>??</strong> to navigate</span>
               <span><strong>enter</strong> to select</span>
               <span><strong>esc</strong> to dismiss</span>
             </span>
@@ -165,6 +173,7 @@ export default class FuzzyPicker extends React.Component {
 }
 FuzzyPicker.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  showAllItems: PropTypes.bool,
   label: PropTypes.string,
   displayCount: PropTypes.number,
   cycleAtEndsOfList: PropTypes.bool,
@@ -177,6 +186,7 @@ FuzzyPicker.propTypes = {
   itemValue: PropTypes.func,
 };
 FuzzyPicker.defaultProps = {
+  showAllItems: false,
   label: 'Search', // The text above the searchbox that describes what's happening
   displayCount: 5, // How many items to display at once
   cycleAtEndsOfList: true, // When a user arrows past the end of the list, should the highlight wrap?

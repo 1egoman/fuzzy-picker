@@ -45,6 +45,24 @@ describe('React Picker Component', function() {
     assert.equal(component.find('.fuzzy-items li').length, 0); // should be no items shown
   });
 
+  it('should be able to optionally show all items before any text is typed', function() {
+    let component = shallow(<FuzzyPicker
+      isOpen={true}
+      label="My Label"
+      displayCount={2}
+      items={['foo', 'food', 'follow']}
+      showAllItems={true}
+    />), elem;
+    let input = component.find('.fuzzy-input').first();
+
+    // Verify its showing the right number of items
+    assert.deepEqual(
+        component.find('.fuzzy-items li').map(n => n.text()),
+        ['foo', 'food', 'follow']
+      );
+  });
+  
+
   it('should show how many items its told to', function() {
     let component = shallow(<FuzzyPicker
       isOpen={true}

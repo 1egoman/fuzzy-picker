@@ -245,4 +245,44 @@ describe('React Picker Component', function() {
     input.simulate('keydown', {key: 'Escape'}); // select it
     assert(onCloseSpy.called);
   });
+
+  it('by default enter does not close', function() {
+    let onCloseSpy = sinon.spy();
+    let component = shallow(<FuzzyPicker
+      isOpen={true}
+      onClose={onCloseSpy}
+      items={['foo', 'bar', 'baz']}
+    />);
+    let input = component.find('.fuzzy-input').first();
+    input.simulate('change', {target: {value: 'f'}}); // enter data
+    input.simulate('keydown', {key: 'Enter'}); // select it
+    assert(onCloseSpy.notCalled);
+  });
+  
+  it('should be able to be optionally closed with enter', function() {
+    let onCloseSpy = sinon.spy();
+    let component = shallow(<FuzzyPicker
+      isOpen={true}
+      onClose={onCloseSpy}
+      autoCloseOnEnter={true}
+      items={['foo', 'bar', 'baz']}
+    />);
+    let input = component.find('.fuzzy-input').first();
+    input.simulate('change', {target: {value: 'f'}}); // enter data
+    input.simulate('keydown', {key: 'Enter'}); // select it
+    assert(onCloseSpy.called);
+  });
+
+  it('close on enter can be explictly disabled', function() {
+    let onCloseSpy = sinon.spy();
+    let component = shallow(<FuzzyPicker
+      isOpen={false}
+      onClose={onCloseSpy}
+      items={['foo', 'bar', 'baz']}
+    />);
+    let input = component.find('.fuzzy-input').first();
+    input.simulate('change', {target: {value: 'f'}}); // enter data
+    input.simulate('keydown', {key: 'Enter'}); // select it
+    assert(onCloseSpy.notCalled);
+  });
 });

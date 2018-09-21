@@ -66,6 +66,25 @@ ReactDOM.render(<FuzzyWrapper
 With the above, pressing `/` will open the fuzzy picker (and you don't have to worry about
 managing that state.)
 
+The fuzzy picker is automatically dismissed (closed) when the user presses escape. 
+
+### Automatic close on enter
+
+By default `FuzzyPicker` doesn't close when the user presses the enter key. To make it behave this way you can close it in response to the `onChange` event.
+
+You can also enable automatically close on enter by setting the `autoCloseOnEnter` property to true. This enables the behaviour to automatically close `FuzzyPicker` when the user presses enter to choose an item
+
+```javascript
+import FuzzyPicker from 'react-fuzzy-picker';
+ReactDOM.render(<FuzzyPicker
+  isOpen={true}
+  onClose={() => console.log('You closed the fuzzy-picker')}
+  onChange={choice => console.log('You picked', choice)}
+  autoCloseOnEnter={true} // Automatically close FuzzyPicker when the user presses enter.
+  items={["foo", "bar", "baz"]}
+/>, element);
+```
+
 ### Asynchronous Items
 Sometimes, you want to fetch items asynchronously. Here's how you'd do that here.
 

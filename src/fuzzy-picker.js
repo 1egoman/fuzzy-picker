@@ -75,6 +75,9 @@ export default class FuzzyPicker extends React.Component {
         if (item) {
           this.setState({items: this.getInitialItems()});
           this.props.onChange(item);
+          if (this.props.autoCloseOnEnter) {
+            this.props.onClose();
+          }
         }
         break;
       }
@@ -168,6 +171,7 @@ FuzzyPicker.propTypes = {
   onChangeHighlightedItem: PropTypes.func,
   onChange: PropTypes.func,
   onClose: PropTypes.func,
+  autoCloseOnEnter: PropTypes.bool,
 
   renderItem: PropTypes.func,
   itemValue: PropTypes.func,
@@ -179,6 +183,7 @@ FuzzyPicker.defaultProps = {
   onChangeHighlightedItem(item) {}, // Called when the user highlights a new item
   onChange(item) {}, // Called when an item is selected
   onClose() {}, // Called when the popup is closed
+  autoCloseOnEnter: false,
 
   // By default, the item as its value (ie, each item is a string.)
   renderItem(item) { return item; },

@@ -138,6 +138,7 @@ export default class FuzzyPicker extends React.Component {
               {this.props.label}
             </span>
             <span className="fuzzy-picker-instructions">
+              <span><strong>tab</strong> or <strong>↑↓</strong> to navigate</span>
               <span><strong>tab</strong> or <strong>??</strong> to navigate</span>
               <span><strong>enter</strong> to select</span>
               <span><strong>esc</strong> to dismiss</span>

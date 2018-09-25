@@ -85,6 +85,21 @@ ReactDOM.render(<FuzzyPicker
 />, element);
 ```
 
+### Showing all items
+
+By default `FuzzyPicker` doesn't show any items until you start to type and matching items are found. You can enable showing of all items before any text is entered by enabling the `showAllItems` property as follows:
+
+```javascript
+import FuzzyPicker from 'react-fuzzy-picker';
+ReactDOM.render(<FuzzyPicker
+  isOpen={true}
+  onClose={() => console.log('You closed the fuzzy-picker')}
+  onChange={choice => console.log('You picked', choice)}
+  showAllItems={true} // Automatically show all items by default.
+  items={["foo", "bar", "baz"]}
+/>, element);
+```
+
 ### Asynchronous Items
 Sometimes, you want to fetch items asynchronously. Here's how you'd do that here.
 
@@ -130,6 +145,7 @@ Props:
 - `label`: A string, a label to print above the fuzzy-picker textbox.
 - `items`: An array of strings. These are a "haystack" of all items. This is searched against to
   find a match.
+- `showAllItems`: Set to `true` to shows all items when nothing is typed in the fuzzy picker. Defaults to `false` meaning no items are shown until you start typing.
 - `displayCount`: An integer, how many matches to show at maximum.
 - `cycleAtEndsOfList`: A boolean, when a user arrows past the end of the list, should the highlight wrap?
 - `onChangeHighlightedItem`: a callback that is fired when the highlight changes within the
@@ -138,6 +154,7 @@ Props:
   argument, the chosen item.
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
   background, this callback is fired. Passed zero arguments.
+- `autoCloseOnEnter`: Set to `true` to automatically close fuzzy picker when the selects an item with the enter key. Defaults to `false` meaning that pressing enter does not close the fuzzy picker.
 - `renderItem`: An optional function that allows a user to map each function to its
   displayed component on the page. This is presentational only. If `itemValue` is specified, this
   prop must also be specified.

@@ -43,7 +43,7 @@
     "enzyme": "^2.7.0",
     "gulp": "^3.8.10",
     "gulp-babel": "^6.0.0",
-    "gulp-connect": "^5.6.1",
+    "gulp-connect": "^5.7.0",
     "gulp-istanbul": "^0.6.0",
     "gulp-jscs": "^1.4.0",
     "gulp-jshint": "^1.9.0",
@@ -76,11 +76,11 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "fuzzysearch": "^1.0.3",
-    "prop-types": "^15.6.0"
+    "fuzzysearch": "^1.0.3"
   },
   "peerDependencies": {
-    "react": "^15.1.0",
-    "react-dom": "^15.4.1"
+    "react": "16.x.x",
+    "react-dom": "16.x.x",
+    "prop-types": "16.8.0"
   }
 }

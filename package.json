@@ -65,7 +65,7 @@
     "uglifyify": "^3.0.2",
     "uglifyjs": "^2.4.10",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.11.1"
   },
   "nodeBoilerplateOptions": {
     "mochaGlobals": [

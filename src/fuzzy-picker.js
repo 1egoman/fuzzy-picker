@@ -100,16 +100,30 @@ export default class FuzzyPicker extends React.Component {
     }
   }
 
+  //
+  // Filter items by the search string.
+  //
+  filterItems(search) {
+      const searchLwr = search.toLowerCase();
+      if (!this.props.pickExactItem) {
+          // Pick the closest matching items if possible.
+          return this.props.items.filter(item => fuzzysearch(
+            searchLwr,
+            this.props.itemValue(item).toLowerCase()
+          ));
+      }
+      else {
+          // Pick only exact matches.
+          return this.props.items.filter(item => this.props.itemValue(item).toLowerCase().indexOf(searchLwr) >= 0);
+      }
+  }
+
   // When the user types into the textbox, this handler is called.
   // Though the textbox is an uncontrolled input, this is needed to regenerate the
   // list of choices under the textbox.
   onInputChanged({target: {value}}) {
     if (value.length) {
-      // Pick the closest matching items if possible.
-      let items = this.props.items.filter(item => fuzzysearch(
-        value.toLowerCase(),
-        this.props.itemValue(item).toLowerCase()
-      ));
+      let items = this.filterItems(value);
       if (this.props.displayCount !== 0) {
         items = items.slice(0, this.props.displayCount);
       }
@@ -188,6 +202,7 @@ FuzzyPicker.propTypes = {
   onChange: PropTypes.func,
   onClose: PropTypes.func,
   autoCloseOnEnter: PropTypes.bool,
+  pickExactItem: PropTypes.bool,
 
   renderItem: PropTypes.func,
   itemValue: PropTypes.func,
@@ -201,6 +216,7 @@ FuzzyPicker.defaultProps = {
   onChange(item) {}, // Called when an item is selected
   onClose() {}, // Called when the popup is closed
   autoCloseOnEnter: false,
+  pickExactItem: false,
 
   // By default, the item as its value (ie, each item is a string.)
   renderItem(item) { return item; },

@@ -182,6 +182,12 @@ export default class FuzzyPicker extends React.Component {
                 })}
                 onMouseOver={this.selectIndex.bind(this, ct)}
                 onClick={this.props.onChange.bind(this, this.state.items[ct])}
+                ref={el => {
+                    if (el && 
+                        ct === this.state.selectedIndex) {
+                        el.scrollIntoView({ block: "nearest" });
+                    }
+                }}
               >{this.props.renderItem(item)}</li>;
             })}
           </ul>

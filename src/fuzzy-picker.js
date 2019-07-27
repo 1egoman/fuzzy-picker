@@ -110,10 +110,17 @@ export default class FuzzyPicker extends React.Component {
         value.toLowerCase(),
         this.props.itemValue(item).toLowerCase()
       ));
-      this.setState({items: items.slice(0, this.props.displayCount), selectedIndex: 0});
+      if (this.props.displayCount !== 0) {
+        items = items.slice(0, this.props.displayCount);
+      }
+      this.setState({items, selectedIndex: 0});
     } else {
       // initially, show an empty picker or all items.
-      this.setState({items: this.getInitialItems(this.props).slice(0, this.props.displayCount), selectedIndex: 0});
+      let items = this.getInitialItems(this.props);
+      if (this.props.displayCount !== 0) {
+        items = items.slice(0, this.props.displayCount);
+      }
+      this.setState({items, selectedIndex: 0});
     }
   }
 

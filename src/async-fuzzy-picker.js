@@ -6,7 +6,7 @@ import FuzzyPicker from './fuzzy-picker';
 export default class AsyncFuzzyPicker extends FuzzyPicker {
   // Since we're fetching async, fetch the new items to show.
   onInputChanged({target: {value}}) {
-    return this.props.fetchItems(content).then(items => {
+    return this.props.fetchItems(value).then(items => {
       if (Array.isArray(items)) {
         this.setState({items});
       } else {

@@ -124,7 +124,7 @@ export default class FuzzyPicker extends React.Component {
   }
 
   onClickOnBg(event) {
-    if (event.target.className === 'fuzzy-switcher-background') {
+    if (event.target.className === 'fuzzy-picker-background') {
       this.props.onClose();
     }
   }

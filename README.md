@@ -155,6 +155,7 @@ Props:
 - `onClose`: When the user closes the fuzzy-finder by either pressing escape of clicking on the
   background, this callback is fired. Passed zero arguments.
 - `autoCloseOnEnter`: Set to `true` to automatically close fuzzy picker when the selects an item with the enter key. Defaults to `false` meaning that pressing enter does not close the fuzzy picker.
+- `pickExactItem`: Set to true `true` to disable the fuzzy search and filter down to exact matches only.
 - `renderItem`: An optional function that allows a user to map each function to its
   displayed component on the page. This is presentational only. If `itemValue` is specified, this
   prop must also be specified.

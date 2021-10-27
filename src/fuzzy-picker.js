@@ -73,9 +73,9 @@ export default class FuzzyPicker extends React.Component {
       case 'Enter': { // Enter key
         let item = this.state.items[this.state.selectedIndex];
         if (item) {
-          this.setState({items: this.getInitialItems(this.props)});
           this.props.onChange(item);
           if (this.props.autoCloseOnEnter) {
+            this.setState({items: this.getInitialItems(this.props)});
             this.props.onClose();
           }
         }
@@ -145,7 +145,7 @@ export default class FuzzyPicker extends React.Component {
   }
 
   onClickOnBg(event) {
-    if (event.target.className === 'fuzzy-switcher-background') {
+    if (event.target.className === 'fuzzy-picker-background') {
       this.props.onClose();
     }
   }
